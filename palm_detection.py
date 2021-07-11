@@ -20,6 +20,16 @@ while True:
                 h,w,c=img.shape
                 cx,cy=int(lm.x*w),int(lm.y*h) # to change to pixel value from decimals
                 print(id,cx,cy)
+                if id==4:
+                    cv2.circle(img,(cx,cy),10,(255,0,255),cv2.FILLED)
+                elif id==8:
+                    cv2.circle(img, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
+                elif id==12:
+                    cv2.circle(img, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
+                elif id==16:
+                    cv2.circle(img, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
+                elif id == 20:
+                    cv2.circle(img, (cx, cy), 10, (255, 0, 255), cv2.FILLED)
             mpDraw.draw_landmarks(img,handLms, mpHands.HAND_CONNECTIONS) # we will use mpDraw to draw the lines between different points.
     cTime=time.time()
     fps=1/(cTime-pTime)
@@ -27,4 +37,5 @@ while True:
 
     cv2.putText(img,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,255,255),3)  # first 3 for scale and next is for font size
     cv2.imshow("image",img)
-    cv2.waitKey(1)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
